@@ -1,6 +1,11 @@
-name: Catalogue Deployment
-run-name: ${{ github.actor }} Catalogue Deployment 🚀
-on: [push, workflow_dispatch]
+name: Deployment
+run-name: Deployment
+on:
+  workflow_call:           #this block indicates reusable actions
+    inputs:                #inputs block is to receive inputs
+      component:
+        required: true
+        type: string
 jobs:
   DEV:
     runs-on: self-hosted
@@ -11,8 +16,9 @@ jobs:
           repository: VenkatBheemireddyOrg/roboshop-helm
       - run: |
           echo $PATH
-          bash argocd.sh catalogue dev
+          bash argocd.sh ${{ inputs.component }} dev
         name: Deployment
+
   QA:
     runs-on: self-hosted
     needs: DEV
