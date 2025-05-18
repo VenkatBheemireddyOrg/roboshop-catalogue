@@ -1,8 +1,17 @@
-name: Catalogue Deployment
-on: [push, workflow_dispatch]
+name: Catalogue CICD
+run-name: Catalogue CICD
+on: [push]
 jobs:
-  deploy:
+  ci:
     uses: VenkatBheemireddyOrg/github-reusable-actions/.github/workflows/ci.yml@main
     with:
-      component: catalogue     #with block is to pass parameter
+      component: catalogue
+      appType: nodejs
+
+  deploy:
+    needs: ci
+    uses: VenkatBheemireddyOrg/github-reusable-actions/.github/workflows/ci.yml@main
+    with:
+      component: catalogue
+
 
