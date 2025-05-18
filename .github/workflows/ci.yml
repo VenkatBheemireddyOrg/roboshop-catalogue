@@ -2,7 +2,7 @@ name: Catalogue Deployment
 on: [push, workflow_dispatch]
 jobs:
   deploy:
-    uses: VenkatBheemireddyOrg/github-reusable-actions/.github/workflows/deploy.yml@main
+    uses: VenkatBheemireddyOrg/github-reusable-actions/.github/workflows/ci.yml@main
     with:
       component: catalogue     #with block is to pass parameter
 
