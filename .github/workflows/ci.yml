@@ -7,7 +7,8 @@ jobs:
     with:
       component: catalogue
       appType: nodejs
-
+    secrets:
+      VAULT_TOKEN: ${{ secrets.VAULT_TOKEN }}
   deploy:
     needs: ci
     uses: VenkatBheemireddyOrg/github-reusable-actions/.github/workflows/deploy.yml@main
