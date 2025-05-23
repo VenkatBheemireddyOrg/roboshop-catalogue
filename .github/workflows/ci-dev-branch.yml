@@ -1,0 +1,14 @@
+name: Catalogue CICD - Dev Branch
+run-name: Catalogue CICD - Dev Branch
+on:
+  push:
+    branches:
+      - 'RB-**'
+jobs:
+  ci:
+    uses: VenkatBheemireddyOrg/github-reusable-actions/.github/workflows/ci-dev-branch.yml@main
+    with:
+      component: catalogue
+      appType: nodejs
+    secrets:
+      VAULT_TOKEN: ${{ secrets.VAULT_TOKEN }}

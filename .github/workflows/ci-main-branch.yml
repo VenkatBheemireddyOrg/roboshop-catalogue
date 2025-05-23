@@ -1,9 +1,12 @@
-name: Catalogue CICD
-run-name: Catalogue CICD
-on: [push]
+name: Catalogue CICD - Main Branch
+run-name: Catalogue CICD - Main Branch
+on:
+  push:
+    branches:
+      - main
 jobs:
   ci:
-    uses: VenkatBheemireddyOrg/github-reusable-actions/.github/workflows/ci.yml@main
+    uses: VenkatBheemireddyOrg/github-reusable-actions/.github/workflows/ci-main-branch.yml@main
     with:
       component: catalogue
       appType: nodejs
@@ -15,5 +18,3 @@ jobs:
     uses: VenkatBheemireddyOrg/github-reusable-actions/.github/workflows/deploy.yml@main
     with:
       component: catalogue
-
-
